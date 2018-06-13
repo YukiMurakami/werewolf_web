@@ -29,6 +29,9 @@
 <script>
 var AuthUI = {
   init: function(){
+    if(AuthUI.data.authed){
+      location.href = "https://werewolf-c8340.firebaseapp.com/index.html"
+    }
     AuthUI.provider = new firebase.auth.GoogleAuthProvider();
     AuthUI.elAuthBtn = document.querySelector('.authBtn');
     AuthUI.elUserId = document.querySelector('.userId');
@@ -66,9 +69,6 @@ var AuthUI = {
   draw: function(){
     AuthUI.elAuthBtn.textContent = AuthUI.data.authed ? 'LOGOUT' : 'LOGIN';
     AuthUI.elUserId.textContent = AuthUI.data.userId;
-    if(AuthUI.data.authed){
-      location.href = "https://werewolf-c8340.firebaseapp.com/index.html"
-    }
   },
   doAuth: function(){
     if(AuthUI.data.authed){
