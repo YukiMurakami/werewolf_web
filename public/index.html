@@ -1,126 +1,40 @@
-<!-- <!doctype html> -->
-<html lang="ja">
+<!DOCTYPE html>
+<html>
 
- <head>
-<!-- 　//Firebaseライブラリを読み込む -->
-  <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+<head>
+    <title>Sample</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style type="text/css"></style>
 
-  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="chat.js"></script>
-
+    <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBBFuLuDHdUWI-1yb76N9o8I7V5NSuAHZU",
-    authDomain: "werewolf-c8340.firebaseapp.com",
-    databaseURL: "https://werewolf-c8340.firebaseio.com",
-    projectId: "werewolf-c8340",
-    storageBucket: "werewolf-c8340.appspot.com",
-    messagingSenderId: "531371010019"
-  };
-  firebase.initializeApp(config);
-</script>
-<!-- ログイン機能 -->
-<button class="authBtn" disabled></button>
-<span class="userId"></span>
+</head>
 
-<script>
-var AuthUI = {
-  init: function(){
-    AuthUI.provider = new firebase.auth.GoogleAuthProvider();
-    AuthUI.elAuthBtn = document.querySelector('.authBtn');
-    AuthUI.elUserId = document.querySelector('.userId');
-    AuthUI.draw();
-    AuthUI.elAuthBtn.addEventListener('click', function(){
-      AuthUI.doAuth();
-    });
-    firebase.auth().getRedirectResult().then(function(result) {
-      AuthUI.elAuthBtn.disabled = false;
-      if (result.credential) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-      }
-      if(result.user){
-        AuthUI.data.authed = true;
-        AuthUI.data.userId = result.user.email;
-        AuthUI.draw();
-      }
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
-  },
-  data: {
-    authed: false,
-    userId: '',
-    info: ''
-  },
-  draw: function(){
-    AuthUI.elAuthBtn.textContent = AuthUI.data.authed ? 'LOGOUT' : 'LOGIN';
-    AuthUI.elUserId.textContent = AuthUI.data.userId;
-  },
-  doAuth: function(){
-    if(AuthUI.data.authed){
-      firebase.auth().signOut().then(function() {
-        AuthUI.data.authed = false;
-        AuthUI.data.userId = '';
-        AuthUI.draw();
-      }, function(error) {
-        // An error happened.
-      });
-    }
-    else {
-      firebase.auth().signInWithRedirect(AuthUI.provider);
-    }
-  }
-};
-AuthUI.init();
-</script>
-  <!-- //少ないのでcssベタ張り -->
-  <style>
-    ul > li:first-child {
-     color: black;
-     font-size: 25px;
-    }
-    ul > li:nth-child(2n) {
-     color: blue;
-    }
-    ul > li:nth-child(2n):before {
-     content:"ユーザー名："
-    }
-  </style>
- </head>
+<body id="body">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <input type="text" id="nameIn" placeholder="名前" value="">
+            <input type="text" id="msgIn" class="form-control" placeholder="メッセージを入れてくださいな" value="" required="required" pattern="" title="">
+            <!-- <input type="text" id="nameIn" value=""> -->
+        </div>
+    </nav>
 
- <body>
+    <main>
+        <div class="container">
+            <div id="msgDiv"></div>
+            <br class="clear_balloon" />
+            <div id="bottomDiv"></div>
+        </div>
 
-  <div>
-   <!-- 投稿者 -->
-   <div>
-    <p>ユーザ名</p>
-    <textarea name="" id="jsi-name" cols="10" rows="1"></textarea>
-   </div>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
 
-   <!-- メッセージを打ち込む部分 -->
-   <div>
-    <p>内容</p>
-    <textarea name="" id="jsi-msg" cols="30" rows="4"></textarea>
-   </div>
-  </div>
-
-  <!-- メッセージを送る部分 -->
-  <button name="button" id="jsi-button">send message!</button>
-
-  <!-- チャット内容が動的に生成される部分 -->
-  <ul id="jsi-board" style="list-style:none;">
-    <li>〜チャット内容〜</li>
-  </ul>
- </body>
-</html>
+</body>

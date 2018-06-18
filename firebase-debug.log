@@ -1,0 +1,79 @@
+[debug] [2018-06-18T12:39:44.117Z] ----------------------------------------------------------------------
+[debug] [2018-06-18T12:39:44.119Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-06-18T12:39:44.119Z] CLI Version:   3.18.6
+[debug] [2018-06-18T12:39:44.119Z] Platform:      darwin
+[debug] [2018-06-18T12:39:44.119Z] Node Version:  v8.11.2
+[debug] [2018-06-18T12:39:44.120Z] Time:          Mon Jun 18 2018 21:39:44 GMT+0900 (JST)
+[debug] [2018-06-18T12:39:44.120Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-18T12:39:44.134Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-18T12:39:44.134Z] > authorizing via signed-in user
+[debug] [2018-06-18T12:39:44.137Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/werewolf-c8340  
+  
+ Mon Jun 18 2018 21:39:44 GMT+0900 (JST)
+[debug] [2018-06-18T12:39:45.551Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-18T12:39:45.553Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/werewolf-c8340/tokens  
+  
+ Mon Jun 18 2018 21:39:45 GMT+0900 (JST)
+[debug] [2018-06-18T12:39:46.327Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-18T12:39:46.329Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/werewolf-c8340  
+  
+ Mon Jun 18 2018 21:39:46 GMT+0900 (JST)
+[debug] [2018-06-18T12:39:47.400Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/kazuaki/Documents/werewolf_web'...
+[info] 
+[debug] [2018-06-18T12:39:47.404Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Mon Jun 18 2018 21:39:47 GMT+0900 (JST)
+[debug] [2018-06-18T12:39:48.221Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[debug] [2018-06-18T12:39:48.250Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Mon Jun 18 2018 21:39:48 GMT+0900 (JST)
+[debug] [2018-06-18T12:39:49.038Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5004
+
+[debug] [2018-06-18T13:08:10.680Z] ----------------------------------------------------------------------
+[debug] [2018-06-18T13:08:10.682Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-06-18T13:08:10.682Z] CLI Version:   3.18.6
+[debug] [2018-06-18T13:08:10.683Z] Platform:      darwin
+[debug] [2018-06-18T13:08:10.683Z] Node Version:  v8.11.2
+[debug] [2018-06-18T13:08:10.683Z] Time:          Mon Jun 18 2018 22:08:10 GMT+0900 (JST)
+[debug] [2018-06-18T13:08:10.683Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-18T13:08:10.698Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-18T13:08:10.698Z] > authorizing via signed-in user
+[debug] [2018-06-18T13:08:10.701Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/werewolf-c8340  
+  
+ Mon Jun 18 2018 22:08:10 GMT+0900 (JST)
+[debug] [2018-06-18T13:08:12.082Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-18T13:08:12.083Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/werewolf-c8340/tokens  
+  
+ Mon Jun 18 2018 22:08:12 GMT+0900 (JST)
+[debug] [2018-06-18T13:08:13.104Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-18T13:08:13.106Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/werewolf-c8340  
+  
+ Mon Jun 18 2018 22:08:13 GMT+0900 (JST)
+[debug] [2018-06-18T13:08:14.158Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/kazuaki/Documents/werewolf_web'...
+[info] 
+[debug] [2018-06-18T13:08:14.162Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Mon Jun 18 2018 22:08:14 GMT+0900 (JST)
+[debug] [2018-06-18T13:08:15.117Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[debug] [2018-06-18T13:08:15.147Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Mon Jun 18 2018 22:08:15 GMT+0900 (JST)
+[debug] [2018-06-18T13:08:15.860Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5004 is not available. Trying another port...
+[debug] [2018-06-18T13:08:15.865Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Mon Jun 18 2018 22:08:15 GMT+0900 (JST)
+[debug] [2018-06-18T13:08:16.657Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5008
+
