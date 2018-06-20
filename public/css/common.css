@@ -110,13 +110,17 @@
 
 .right_name {
     position: relative;
-    /*background: #85e249;*/
-    /*border: 1px solid #777;*/
-    /*margin: 10px;*/
-    /*padding: 10px;*/
-    /*border-radius: 15px;*/
+    font-size:5px;
     margin-left: 20%;
     clear: both;
     max-width: 500px;
     float: right;
+}
+.right_name {
+    position: relative;
+    font-size:5px;
+    margin-right: 20%;
+    clear: both;
+    max-width: 500px;
+    float: left;
 }

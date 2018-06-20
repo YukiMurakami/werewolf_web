@@ -28,7 +28,13 @@ rootRef.on('child_added', function (ss) {
 
 function dspChatMsg(name, text) {
     if(text!=""){
-        $('<div class="right_name"/>').text(name).appendTo($('#msgDiv'));
-        $('<div class="right_balloon"/>').text(text).appendTo($('#msgDiv'));
+        if(name=="長谷部"){
+            $('<div class="right_name"/>').text(name).appendTo($('#msgDiv'));
+            $('<div class="right_balloon"/>').text(text).appendTo($('#msgDiv'));
+        }else{
+            $('<div class="left_name"/>').text(name).appendTo($('#msgDiv'));
+            $('<div class="left_balloon"/>').text(text).appendTo($('#msgDiv'));
+
+        }
         $("html,body").animate({ scrollTop: $('#bottomDiv').offset().top }, 0);
 }};

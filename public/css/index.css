@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+
+body {
+    padding-bottom: 10%;
+    background-color: #7897C5;
+}
 /*******************************
 * 個別スタイル
 ********************************/
@@ -34,7 +39,3 @@
     height: 100px;
 }
 
-#body {
-	padding-bottom: 10%;
-	background-color: #7897C5;
-}
