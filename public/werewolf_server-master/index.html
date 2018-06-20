@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>websocket-chat</title>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript"
+                src="/socket.io/socket.io.js"></script>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>werewolf-html-client</h1>
+            <form id="form-beforegame" class="form-inline">
+                <input type="text" class="form-control" id="name_form">
+                <button type="button" class="btn btn-primary" id="join">join room</button>
+                <button type="button" class="btn btn-primary" id="exit">exit room</button>
+                <button type="button" class="btn btn-primary" id="game_start">gameStart</button>
+                <div id="id_name_role"></div>
+            </form>
+
+            <form id="form-phaseshift" class="form-inline">
+                <button type="button" class="btn btn-primary" id="morning_check">morning check</button>
+                <button type="button" class="btn btn-primary" id="finish_daytime">finish daytime</button>
+                <select id="vote_cands">
+                    <option value="none">vote</option>
+                </select>
+                <button type="button" class="btn btn-primary" id="vote">vote</button>
+                <button type="button" class="btn btn-primary" id="evening_check">evening check</button>
+                <button type="button" class="btn btn-primary" id="evening_chat">sending chat</button>
+            </form>
+
+            <form id="form-action" class="form-inline">
+                <select id="action_cands">
+                    <option value="none">act</option>
+                </select>
+                <select id="bite_power">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <button type="button" class="btn btn-primary" id="action">action</button>
+            </form>
+
+            <form id="form-debug" class="form-inline">
+                <button type="button" class="btn btn-primary" id="clear_log">clear log</button>
+                <button type="button" class="btn btn-primary" id="end_night">end night</button>
+            </form>
+            <div id="logs">log:</div>
+        </div>
+
+        <script type="text/javascript">
+         function appendLog(text){ $("#logs").append("<div>" + text + "</div>"); }
+         function clearLog()     { $("#logs").html(""); }
+
+         // init
+         function randomString(length) {
+             return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
+         };
+         const userId = randomString(8)
+         let name = "";
+         let role = ""
+         $("#id_name_role").html("id: " + userId + ", name: " + name + ", role: " + role);
+
+         // socket on
+         let socket = io.connect();
+         socket.on("connectionEstablished", function(){ appendLog("connect!"); });
+         socket.on("debug", function(debug){
+             console.log(debug);
+             appendLog(debug);
+         })
+
+         // debug
+         $("#clear_log").click(function(e){ clearLog(); });
+         $("#end_night").click(function(e){ socket.emit("endNight"); });
+
+         // before
+         $("#join").click(function(e){
+             const message = $("#name_form").val();
+             if(message == ""){
+                 appendLog("input your name");
+             } else {
+                 $("#name_form").val("");
+                 socket.emit("joinRoom", {userId : userId, name: message});
+                 name = message
+                 $("#id_name_role").html("id: " + userId + ", name: " + name + ", role: " + role);
+                 e.preventDefault();
+             }
+         });
+         $("#exit").click(function(e){
+             socket.emit("exitRoom");
+             $("#id_name_role").html("id: " + userId + ", name: " + name + ", role: " + role);
+         });
+         $("#game_start").click(function(e){ socket.emit("startGame"); });
+
+         // phase
+         let id2nameMap = {};
+         let name2idMap = {};
+         socket.on("memberChanged", function(pairs){ // pairs:[{id, name}]
+             id2nameMap = pairs.reduce((ret,p)=>{ // setup map
+                 ret[p.id] = p.name;
+                 return ret;
+             },{});
+             name2idMap = pairs.reduce((ret,p)=>{
+                 ret[p.name] = p.id;
+                 return ret;
+             },{});
+
+             appendLog(pairs.reduce((ret,p)=>{ret.push(p.name); return ret;},[]));
+         });
+
+         socket.on("phaseChange", function(data){
+             appendLog(data.phase + " of day " + data.dayCount + ", sec:" + data.timeCount);
+         });
+         socket.on("roleAck", function(roleName){
+             role = roleName;
+             $("#id_name_role").html("id: " + userId + ", name: " + name + ", role: " + role);
+             appendLog("role: " + role);
+         });
+
+         $("#morning_check").click(function(e){ socket.emit("morningResultChecked"); });
+         $("#finish_daytime").click(function(e){ socket.emit("finishDiscussion"); });
+         $("#evening_check").click(function(e){ socket.emit("eveningResultChecked"); });
+
+         // vote
+         socket.on("voteCandidates", function(ids){
+             appendLog("select and vote")
+
+             $("#vote_cands").html("");
+             for(const id of ids){
+                 $("#vote_cands").append("<option value="+id+">"+id2nameMap[id]+"</option>");
+             }
+         })
+         $("#vote").click(function(e){
+             const voteId = document.getElementById("vote_cands").value;
+             //  if(id!="" || id!="none"){ socket.emit("vote", [voteId]); }
+             appendLog(voteId)
+             socket.emit("vote", [voteId]);
+             $("#vote_cands").html("");
+         });
+         socket.on("voteResult", function(result){
+             console.log(result);
+             appendLog("We excute " + id2nameMap[result.executedId] + ", and We hope the village become peace");
+         })
+
+         // chat
+         $("#evening_chat").click(function(e){
+            const message = $("#name_form").val();
+            if(message == ""){
+                appendLog("input message");
+            } else {
+                $("#name_form").val("");
+                socket.emit("chat", {message: message});
+                e.preventDefault();
+            }
+         });
+         socket.on("chat", function(result){
+             console.log(result);
+             appendLog(id2nameMap[result.userId] + "さんが発言しました:" + result.message)
+         });
+
+         // action
+         socket.on("actionCandidates", function(ids){
+             appendLog("select and action")
+
+             $("#action_cands").html("");
+             for(const id of ids){
+                 $("#action_cands").append("<option value="+id+">"+id2nameMap[id]+"</option>");
+             }
+         })
+         $("#action").click(function(e){
+             const actId = document.getElementById("action_cands").value;
+             const power = document.getElementById("bite_power").value;
+             socket.emit("action", {userId:actId, bitePower:power});
+             $("#action_cands").html("");
+         });
+         socket.on("actionResult", function(result){
+             console.log(result);
+             appendLog(id2nameMap[result.objectId]+" : "+result.type);
+         })
+
+         //
+         socket.on("morningResult", function(result){
+             console.log(result);
+             let str = result.deadIds.reduce((ret,id)=>{
+                 return ret + id2nameMap[id] + ", ";
+             }, "");
+             appendLog("deads:" + str);
+         });
+
+         //
+         socket.on("gameResult", function(result){
+             console.log(result);
+             appendLog(result.winTeam + "wins!");
+             let str = result.winIds.reduce((ret,id)=>{
+                 return ret + id2nameMap[id] + ", ";
+             }, "");
+             appendLog("win: " + str);
+         });
+
+         socket.on("error", function(data){
+             console.log(data);
+             appendLog("status:"+data.statusCode+" "+data.message);
+         })
+
+        </script>
+    </body>
+</html>

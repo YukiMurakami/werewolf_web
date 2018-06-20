@@ -77,3 +77,101 @@
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5008
 
+[debug] [2018-06-20T22:23:38.789Z] ----------------------------------------------------------------------
+[debug] [2018-06-20T22:23:38.793Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-06-20T22:23:38.794Z] CLI Version:   3.18.6
+[debug] [2018-06-20T22:23:38.794Z] Platform:      darwin
+[debug] [2018-06-20T22:23:38.794Z] Node Version:  v8.11.2
+[debug] [2018-06-20T22:23:38.794Z] Time:          Thu Jun 21 2018 07:23:38 GMT+0900 (JST)
+[debug] [2018-06-20T22:23:38.795Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-20T22:23:38.816Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-20T22:23:38.816Z] > authorizing via signed-in user
+[debug] [2018-06-20T22:23:38.818Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-06-20T22:23:38.819Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/CrxY_-Rt7avvHed2J1LwjvI8cPiVdAMOQabOtefHRAbKgRVpxkdgVTpdQUaUMmAa',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu Jun 21 2018 07:23:38 GMT+0900 (JST)
+[debug] [2018-06-20T22:23:39.183Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T22:23:39.205Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/werewolf-c8340  
+  
+ Thu Jun 21 2018 07:23:39 GMT+0900 (JST)
+[debug] [2018-06-20T22:23:40.073Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T22:23:40.074Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/werewolf-c8340/tokens  
+  
+ Thu Jun 21 2018 07:23:40 GMT+0900 (JST)
+[debug] [2018-06-20T22:23:40.859Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T22:23:40.861Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/werewolf-c8340  
+  
+ Thu Jun 21 2018 07:23:40 GMT+0900 (JST)
+[debug] [2018-06-20T22:23:41.917Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/kazuaki/Documents/werewolf_web'...
+[info] 
+[debug] [2018-06-20T22:23:41.921Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Thu Jun 21 2018 07:23:41 GMT+0900 (JST)
+[debug] [2018-06-20T22:23:43.739Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[debug] [2018-06-20T22:23:43.773Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Thu Jun 21 2018 07:23:43 GMT+0900 (JST)
+[debug] [2018-06-20T22:23:45.716Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5004 is not available. Trying another port...
+[debug] [2018-06-20T22:23:45.721Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Thu Jun 21 2018 07:23:45 GMT+0900 (JST)
+[debug] [2018-06-20T22:23:47.654Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5008
+
+[debug] [2018-06-20T22:24:53.495Z] ----------------------------------------------------------------------
+[debug] [2018-06-20T22:24:53.499Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-06-20T22:24:53.499Z] CLI Version:   3.18.6
+[debug] [2018-06-20T22:24:53.499Z] Platform:      darwin
+[debug] [2018-06-20T22:24:53.499Z] Node Version:  v8.11.2
+[debug] [2018-06-20T22:24:53.500Z] Time:          Thu Jun 21 2018 07:24:53 GMT+0900 (JST)
+[debug] [2018-06-20T22:24:53.501Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-20T22:24:53.516Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-20T22:24:53.517Z] > authorizing via signed-in user
+[debug] [2018-06-20T22:24:53.520Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/werewolf-c8340  
+  
+ Thu Jun 21 2018 07:24:53 GMT+0900 (JST)
+[debug] [2018-06-20T22:24:54.629Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T22:24:54.630Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/werewolf-c8340/tokens  
+  
+ Thu Jun 21 2018 07:24:54 GMT+0900 (JST)
+[debug] [2018-06-20T22:24:55.442Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-20T22:24:55.444Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/werewolf-c8340  
+  
+ Thu Jun 21 2018 07:24:55 GMT+0900 (JST)
+[debug] [2018-06-20T22:24:56.465Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/kazuaki/Documents/werewolf_web'...
+[info] 
+[debug] [2018-06-20T22:24:56.467Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Thu Jun 21 2018 07:24:56 GMT+0900 (JST)
+[debug] [2018-06-20T22:24:57.697Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[debug] [2018-06-20T22:24:57.721Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Thu Jun 21 2018 07:24:57 GMT+0900 (JST)
+[debug] [2018-06-20T22:24:59.638Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5004 is not available. Trying another port...
+[debug] [2018-06-20T22:24:59.644Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Thu Jun 21 2018 07:24:59 GMT+0900 (JST)
+[debug] [2018-06-20T22:25:00.477Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5008 is not available. Trying another port...
+[debug] [2018-06-20T22:25:00.481Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Thu Jun 21 2018 07:25:00 GMT+0900 (JST)
+[debug] [2018-06-20T22:25:01.567Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5012
+
