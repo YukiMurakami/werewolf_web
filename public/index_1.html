@@ -57,18 +57,17 @@
       firebase.initializeApp(config);
         // Firebase認証機能はこの値を通して利用します。
       const auth = firebase.auth()
-      check()
-      // const name = document.querySelector("#name").value
-      var name ="hasebe"
+      checkLoginUser()
+      const name = document.querySelector("#name").value
+      // const name ="hasebe"
       // 登録ボタンのイベント登録
       document.querySelector('#signup')
         .addEventListener('click', async ev => {
           try {
             await auth
               .createUserWithEmailAndPassword(...getEmailAndPassword())
-              updateProfile(name)
+              updateProfile()
               checkLoginUser()
-              check()
               console.log('success')
           } catch (e) {
             console.log('登録失敗', e)
@@ -80,53 +79,56 @@
         return [email, password]
       }
 
-      function updateProfile(name){
-        user = auth.currentUser
-        console.log(user)
-        console.log("update !")
-        user.updateProfile({
-          displayName:name,
-          // photoURL:""
-        }).then(function(){
-          console.log("update success")
-        }).catch(function(error){
-          console.log("update error")
-        })
-      }
       // ログインボタンのイベント登録
       document.querySelector('#login')
         .addEventListener('click', async ev => {
           try {
             await auth
               .signInWithEmailAndPassword(...getEmailAndPassword())
-              // updateProfile(name)
-              // checkLoginUser()
+              updateProfile(name)
+              checkLoginUser()
               console.log('ログイン成功')
               user = auth.currentUser;
               console.log(user)
-              check()
+              // check()
+              setPersistance()
           } catch(e) {
             console.log('ログイン失敗', e)
           }
         })
-      function checkLoginUser(){
-        user = auth.currentUser;
-        name = user.displayName;
-        email = user.email;
-        document.getElementById("user-name").innerHTML=name
-        document.getElementById("user-email").innerHTML=email
+      function updateProfile(){
+        user = auth.currentUser
+        console.log(user)
+        console.log("update !")
+        console.log(name)
+        user.updateProfile({
+          displayName:name,
+          // photoURL:""
+        }).then(function(){
+          console.log("update success")
+          console.log(user)
+        }).catch(function(error){
+          console.log("update error")
+        })
       }
-      function check(){
+      // function checkLoginUser(){
+      //   user = auth.currentUser;
+      //   user_name = user.displayName;
+      //   user_email = user.email;
+      //   document.getElementById("user-name").innerHTML=user_name
+      //   document.getElementById("user-email").innerHTML=user_email
+      // }
+      function checkLoginUser(){
         auth.onAuthStateChanged(function(user) {
             if (user) {
                 console.log('logined')
                 // console.log(user)
                 // console.log(Object.keys(user))
-                name = user.displayName;
-                address = user.email;
-                console.log("name:" + name + ",email:" + address + ",uid:" + user.uid)
-                document.getElementById("user-name").innerHTML="displayName = " + name
-                document.getElementById("user-email").innerHTML="email = " + address
+                user_name = user.displayName;
+                user_email = user.email;
+                console.log("name:" + user_name + ",email:" + user_email + ",uid:" + user.uid)
+                document.getElementById("user-name").innerHTML="displayName = " + user_name
+                document.getElementById("user-email").innerHTML="email = " + user_email
                 
               }else{
                 console.log('nonologined')
@@ -140,7 +142,26 @@
           } catch (e) {
             console.log('登録失敗', e)
           }
+
         })
+
+      function setPersistance(){
+          auth.setPersistence(auth.Auth.Persistence.LOCAL)
+            .then(function() {
+            // Existing and future Auth states are now persisted in the current
+            // session only. Closing the window would clear any existing state even
+            // if a user forgets to sign out.
+            // ...
+            // New sign-in will be persisted with session persistence.
+            // return firebase.auth().signInWithEmailAndPassword(email, password);
+            console.log("setPersistance")
+            })
+            .catch(function(error) {
+              // Handle Errors here.
+              var errorCode = error.code;
+              var errorMessage = error.message;
+            });
+        }
     </script>
  <!-- <div> -->
    <!-- 投稿者 -->
