@@ -16,18 +16,27 @@ $('#msgIn').keypress(function (e) {
     if (e.keyCode == 13) {
         var name = $('#nameIn').val();
         var text = $('#msgIn').val();
-        rootRef.push({ name: name, text: text });
+        rootRef.push({ 
+            name: name,
+            text: text,
+            // 役職ごとにroomをset。村人は個人名にする
+            chatroom:'werewolf'
+        });
         $('#msgIn').val('');
     }
 });
 
 rootRef.on('child_added', function (ss) {
     var msg = ss.val();
-    dspChatMsg(msg.name, msg.text);
+    console.log(msg)
+    dspChatMsg(msg);
 });
 
-function dspChatMsg(name, text) {
-    if(text!=""){
+function dspChatMsg(msg) {
+    var name = msg.name
+    var text = msg.text
+    var chatroom = msg.chatroom
+    if(text!="" && chatroom =='werewolf'){
         if(name=="長谷部"){
             $('<div class="right_name"/>').text(name).appendTo($('#msgDiv'));
             $('<div class="right_balloon"/>').text(text).appendTo($('#msgDiv'));
