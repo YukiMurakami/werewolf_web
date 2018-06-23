@@ -6,84 +6,16 @@
   <script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
   <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="chat.js"></script>
+  <!-- <script src="chat.js"></script> -->
 
 
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBBFuLuDHdUWI-1yb76N9o8I7V5NSuAHZU",
-    authDomain: "werewolf-c8340.firebaseapp.com",
-    databaseURL: "https://werewolf-c8340.firebaseio.com",
-    projectId: "werewolf-c8340",
-    storageBucket: "werewolf-c8340.appspot.com",
-    messagingSenderId: "531371010019"
-  };
-  firebase.initializeApp(config);
-</script>
+
 <!-- ログイン機能 -->
 <button class="authBtn" disabled></button>
 <span class="userId"></span>
 
-<script>
-var AuthUI = {
-  init: function(){
-    AuthUI.provider = new firebase.auth.GoogleAuthProvider();
-    AuthUI.elAuthBtn = document.querySelector('.authBtn');
-    AuthUI.elUserId = document.querySelector('.userId');
-    AuthUI.draw();
-    AuthUI.elAuthBtn.addEventListener('click', function(){
-      AuthUI.doAuth();
-    });
-    firebase.auth().getRedirectResult().then(function(result) {
-      AuthUI.elAuthBtn.disabled = false;
-      if (result.credential) {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = result.credential.accessToken;
-      }
-      if(result.user){
-        AuthUI.data.authed = true;
-        AuthUI.data.userId = result.user.email;
-        AuthUI.draw();
-      }
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
-  },
-  data: {
-    authed: false,
-    userId: '',
-    info: ''
-  },
-  draw: function(){
-    AuthUI.elAuthBtn.textContent = AuthUI.data.authed ? 'LOGOUT' : 'LOGIN';
-    AuthUI.elUserId.textContent = AuthUI.data.userId;
-  },
-  doAuth: function(){
-    if(AuthUI.data.authed){
-      firebase.auth().signOut().then(function() {
-        AuthUI.data.authed = false;
-        AuthUI.data.userId = '';
-        AuthUI.draw();
-      }, function(error) {
-        // An error happened.
-      });
-    }
-    else {
-      firebase.auth().signInWithRedirect(AuthUI.provider);
-    }
-  }
-};
-AuthUI.init();
-</script>
+
   <!-- //少ないのでcssベタ張り -->
   <style>
     ul > li:first-child {
@@ -100,27 +32,136 @@ AuthUI.init();
  </head>
 
  <body>
-
   <div>
+    <input type="text" id="name" placeholder="名前" value="hasebe">
+    <input type="text" id="email" placeholder="アドレス" value="chubflat@gmail.com">
+    <input type="text" id="password" placeholder="パスワード" value="testtest">
+    <button id="signup">signup</button>
+    <button id="login">login</button>
+    <button id="test">test</button>
+  </div>
+  <div>
+    <p id="user-name">ログイン前</p>
+    <p id="user-email">ログイン前</p>
+  </div>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBBFuLuDHdUWI-1yb76N9o8I7V5NSuAHZU",
+        authDomain: "werewolf-c8340.firebaseapp.com",
+        databaseURL: "https://werewolf-c8340.firebaseio.com",
+        projectId: "werewolf-c8340",
+        storageBucket: "werewolf-c8340.appspot.com",
+        messagingSenderId: "531371010019"
+      };
+      firebase.initializeApp(config);
+        // Firebase認証機能はこの値を通して利用します。
+      const auth = firebase.auth()
+      check()
+      // const name = document.querySelector("#name").value
+      var name ="hasebe"
+      // 登録ボタンのイベント登録
+      document.querySelector('#signup')
+        .addEventListener('click', async ev => {
+          try {
+            await auth
+              .createUserWithEmailAndPassword(...getEmailAndPassword())
+              updateProfile(name)
+              checkLoginUser()
+              check()
+              console.log('success')
+          } catch (e) {
+            console.log('登録失敗', e)
+          }
+        })
+      function getEmailAndPassword() {
+        const email = document.querySelector('#email').value
+        const password = document.querySelector('#password').value
+        return [email, password]
+      }
+
+      function updateProfile(name){
+        user = auth.currentUser
+        console.log(user)
+        console.log("update !")
+        user.updateProfile({
+          displayName:name,
+          // photoURL:""
+        }).then(function(){
+          console.log("update success")
+        }).catch(function(error){
+          console.log("update error")
+        })
+      }
+      // ログインボタンのイベント登録
+      document.querySelector('#login')
+        .addEventListener('click', async ev => {
+          try {
+            await auth
+              .signInWithEmailAndPassword(...getEmailAndPassword())
+              // updateProfile(name)
+              // checkLoginUser()
+              console.log('ログイン成功')
+              user = auth.currentUser;
+              console.log(user)
+              check()
+          } catch(e) {
+            console.log('ログイン失敗', e)
+          }
+        })
+      function checkLoginUser(){
+        user = auth.currentUser;
+        name = user.displayName;
+        email = user.email;
+        document.getElementById("user-name").innerHTML=name
+        document.getElementById("user-email").innerHTML=email
+      }
+      function check(){
+        auth.onAuthStateChanged(function(user) {
+            if (user) {
+                console.log('logined')
+                // console.log(user)
+                // console.log(Object.keys(user))
+                name = user.displayName;
+                address = user.email;
+                console.log("name:" + name + ",email:" + address + ",uid:" + user.uid)
+                document.getElementById("user-name").innerHTML="displayName = " + name
+                document.getElementById("user-email").innerHTML="email = " + address
+                
+              }else{
+                console.log('nonologined')
+              }
+        })
+      }
+      document.querySelector('#test')
+        .addEventListener('click', async ev => {
+          try {
+            console.log(user)
+          } catch (e) {
+            console.log('登録失敗', e)
+          }
+        })
+    </script>
+ <!-- <div> -->
    <!-- 投稿者 -->
-   <div>
+<!--    <div>
     <p>ユーザ名</p>
     <textarea name="" id="jsi-name" cols="10" rows="1"></textarea>
    </div>
-
+ -->
    <!-- メッセージを打ち込む部分 -->
-   <div>
+<!--    <div>
     <p>内容</p>
     <textarea name="" id="jsi-msg" cols="30" rows="4"></textarea>
    </div>
-  </div>
+  </div> -->
 
   <!-- メッセージを送る部分 -->
-  <button name="button" id="jsi-button">send message!</button>
-
+<!--   <button name="button" id="jsi-button">send message!</button>
+ -->
   <!-- チャット内容が動的に生成される部分 -->
-  <ul id="jsi-board" style="list-style:none;">
+<!--   <ul id="jsi-board" style="list-style:none;">
     <li>〜チャット内容〜</li>
-  </ul>
+  </ul> -->
  </body>
 </html>
