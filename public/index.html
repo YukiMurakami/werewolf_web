@@ -18,23 +18,27 @@
 </head>
 
 <body>
-
-    <nav class="navbar navbar-default navbar-fixed-bottom">
+    <nav id="footer">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <input type="text" id="nameIn" placeholder="名前" value="長谷部">
             <input type="text" id="msgIn" class="form-control" placeholder="メッセージを入れてくださいな" value="" required="required" pattern="" title="">
             <!-- <input type="text" id="nameIn" value=""> -->
         </div>
     </nav>
+    <nav id="header">
+        <button>action</button>
+    </nav>
+    <div class="chatBody">
 
-    <main>
-        <div class="container">
-            <div id="msgDiv"></div>
-            <br class="clear_balloon" />
-            <div id="bottomDiv"></div>
-        </div>
+        <main>
+            <div class="container">
+                <div id="msgDiv"></div>
+                <br class="clear_balloon" />
+                <div id="bottomDiv"></div>
+            </div>
 
-    </main>
+        </main>
+    </div>
     <!-- app.jsの位置は動かさない -->
     <script src="app.js"></script>
     

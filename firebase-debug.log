@@ -1,0 +1,96 @@
+[debug] [2018-06-23T16:20:15.350Z] ----------------------------------------------------------------------
+[debug] [2018-06-23T16:20:15.353Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-06-23T16:20:15.353Z] CLI Version:   3.18.6
+[debug] [2018-06-23T16:20:15.353Z] Platform:      darwin
+[debug] [2018-06-23T16:20:15.353Z] Node Version:  v8.11.2
+[debug] [2018-06-23T16:20:15.353Z] Time:          Sun Jun 24 2018 01:20:15 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:15.353Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-23T16:20:15.364Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-23T16:20:15.364Z] > authorizing via signed-in user
+[debug] [2018-06-23T16:20:15.366Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/werewolf-c8340  
+  
+ Sun Jun 24 2018 01:20:15 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:16.261Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-23T16:20:16.262Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/werewolf-c8340/tokens  
+  
+ Sun Jun 24 2018 01:20:16 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:17.056Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-23T16:20:17.058Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/werewolf-c8340  
+  
+ Sun Jun 24 2018 01:20:17 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:18.105Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/kazuaki/Documents/werewolf_web'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-06-23T16:20:19.374Z] Fetching environment
+[debug] [2018-06-23T16:20:19.734Z] Error: EACCES: permission denied, open '/Users/kazuaki/.config/gcloud/application_default_credentials.json'
+    at Object.fs.openSync (fs.js:646:18)
+    at Object.fs.writeFileSync (fs.js:1299:33)
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/ensureDefaultCredentials.js:42:6)
+    at FunctionsEmulator.start (/usr/local/lib/node_modules/firebase-tools/lib/functionsEmulator.js:118:3)
+    at Object.start (/usr/local/lib/node_modules/firebase-tools/lib/serve/functions.js:9:29)
+    at /usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:17:21
+    at arrayMap (/usr/local/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:639:23)
+    at Function.map (/usr/local/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:9554:14)
+    at _serve (/usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:15:7)
+    at Command._action (/usr/local/lib/node_modules/firebase-tools/commands/serve.js:48:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-06-23T16:20:27.556Z] ----------------------------------------------------------------------
+[debug] [2018-06-23T16:20:27.558Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-06-23T16:20:27.559Z] CLI Version:   3.18.6
+[debug] [2018-06-23T16:20:27.559Z] Platform:      darwin
+[debug] [2018-06-23T16:20:27.559Z] Node Version:  v8.11.2
+[debug] [2018-06-23T16:20:27.560Z] Time:          Sun Jun 24 2018 01:20:27 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:27.560Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-06-23T16:20:27.570Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-06-23T16:20:27.570Z] > authorizing via signed-in user
+[debug] [2018-06-23T16:20:27.572Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/werewolf-c8340  
+  
+ Sun Jun 24 2018 01:20:27 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:28.479Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-23T16:20:28.480Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/werewolf-c8340/tokens  
+  
+ Sun Jun 24 2018 01:20:28 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:29.448Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-23T16:20:29.450Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/werewolf-c8340  
+  
+ Sun Jun 24 2018 01:20:29 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:30.373Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/kazuaki/Documents/werewolf_web'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-06-23T16:20:30.905Z] Fetching environment
+[debug] [2018-06-23T16:20:30.909Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019:getServerAppConfig  
+  
+ Sun Jun 24 2018 01:20:30 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:30.910Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Sun Jun 24 2018 01:20:30 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:31.880Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5000 is not available. Trying another port...
+[debug] [2018-06-23T16:20:31.910Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Sun Jun 24 2018 01:20:31 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:31.951Z] <<< HTTP RESPONSE 200
+[debug] [2018-06-23T16:20:31.952Z] Starting @google-cloud/functions-emulator
+[debug] [2018-06-23T16:20:33.029Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5004 is not available. Trying another port...
+[debug] [2018-06-23T16:20:33.033Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Sun Jun 24 2018 01:20:33 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:33.506Z] Parsing function triggers
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
+[debug] [2018-06-23T16:20:33.837Z] <<< HTTP RESPONSE 200
+[warn] ⚠  hosting: Port 5008 is not available. Trying another port...
+[debug] [2018-06-23T16:20:33.842Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/531371010019/clients/_:getWebAppConfig  
+  
+ Sun Jun 24 2018 01:20:33 GMT+0900 (JST)
+[debug] [2018-06-23T16:20:34.876Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5012
+
